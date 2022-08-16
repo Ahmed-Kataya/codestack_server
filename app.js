@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const connectionString = require('./env/env')
+const usersRouter = require('./routes/users');
+
 mongoose.connect(connectionString, { useNewUrlParser: true })
 const db = mongoose.connection
 db.once('open', _ => {
@@ -13,3 +15,9 @@ db.on('error', err => {
 const express = require('express');
 
 const app = express();
+
+app.use('/users',usersRouter)
+
+app.listen(3000, function() {
+    console.log('listening on 3000')
+  })
