@@ -1,9 +1,8 @@
 const user = require('../../models/user')
 
-function runCode(req,res) {
+exports.create_user =  function(req,res) {
 
-    //res.send('Hello World')
+    res.send('Hello World')
 }
 
 
-module.exports = runCode();
