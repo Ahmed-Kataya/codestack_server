@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const connectionString = require('./env/env')
 const usersRouter = require('./routes/users');
-
+const bodyParser = require('body-parser')
 mongoose.connect(connectionString, { useNewUrlParser: true })
 const db = mongoose.connection
 db.once('open', _ => {
@@ -15,6 +15,8 @@ db.on('error', err => {
 const express = require('express');
 
 const app = express();
+//use json
+app.use(bodyParser.json())
 
 app.use('/users',usersRouter)
 
